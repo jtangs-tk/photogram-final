@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      List of all users
+    </h1>
+  </div>
+</div>
+
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Comments count
+        </th>
+
+        <th>
+          Email
+        </th>
+
+        <th>
+          Likes count
+        </th>
+
+        <th>
+          Password
+        </th>
+
+        <th>
+          Private
+        </th>
+
+        <th>
+          Username
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_users.each do |a_user| %>
+      <tr>
+        <td>
+          <%= a_user.id %>
+        </td>
+
+        <td>
+          <%= a_user.comments_count %>
+        </td>
+
+        <td>
+          <%= a_user.email %>
+        </td>
+
+        <td>
+          <%= a_user.likes_count %>
+        </td>
+
+        <td>
+          <%= a_user.password %>
+        </td>
+
+        <td>
+          <%= a_user.private ? "Yes" : "No" %>
+        </td>
+
+        <td>
+          <%= a_user.username %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_user.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_user.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/users/<%= a_user.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

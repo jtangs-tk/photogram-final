@@ -19,17 +19,15 @@
         </a>
       </li>
 
-        <li>
-          <a href="/users/sign_in">
-            Sign in
-          </a>
-        </li>
+      <% if current_user.present? %>
+       <li><a href="/users/edit"><%= current_user.username %></a></li>
 
-        <li>
-          <a href="/users/sign_up">
-            Sign up
-          </a>
-        </li>
+        <li><a href="/users/sign_out">Sign out</a></li>
+      <% else %>
+        <li><a href="/users/sign_in">Sign in</a></li>
+  
+        <li><a href="/users/sign_up">Sign up</a></li>
+      <% end %>
     </ul>
     <%= yield %>
   </body>
@@ -42,7 +40,7 @@
 <% end %>
 
 <% if alert.present? %>
-  <div style="color:green">
+  <div style="color:red">
     <%= alert %>
   </div>
 <% end %>

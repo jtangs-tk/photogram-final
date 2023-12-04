@@ -1,22 +1,22 @@
-class PhotosController < ApplicationController
+class UsersController < ApplicationController
   skip_before_action(:authenticate_user!, { :only => [:index] })
   
   def index
-    matching_photos = Photo.all
+    matching_users = User.all
 
-    @list_of_photos = matching_photos.order({ :created_at => :desc })
+    @list_of_users = matching_users.order({ :username => :asc })
 
-    render({ :template => "photos/index" })
+    render({ :template => "users/index" })
   end
 
   def show
-    the_id = params.fetch("path_id")
+    the_id = params.fetch("username")
 
-    matching_photos = Photo.where({ :id => the_id })
+    matching_users = User.where({ :id => the_id })
 
-    @the_photo = matching_photos.at(0)
+    @the_user = matching_users.at(0)
 
-    render({ :template => "photos/show" })
+    render({ :template => "users/show" })
   end
 
   def create
